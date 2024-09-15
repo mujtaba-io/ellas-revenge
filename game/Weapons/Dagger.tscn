@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxwr73lv6pq4q"]
+
+[ext_resource type="Texture2D" uid="uid://cm8ct3at3g1jv" path="res://_extern/Weapon-Asset-Part2/Weapon-Asset-Part2.png" id="1_2xq68"]
+[ext_resource type="Script" path="res://Weapons/Throwable.gd" id="1_8exhu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d3qif"]
+radius = 3.0
+
+[node name="Dagger" type="RigidBody2D"]
+constant_torque = -360.0
+script = ExtResource("1_8exhu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_2xq68")
+region_enabled = true
+region_rect = Rect2(35, 3, 26, 26)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d3qif")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
